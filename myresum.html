@@ -1,3 +1,5 @@
+
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -6,119 +8,135 @@
 
 <style>
 body{
-    font-family: Arial, "Microsoft JhengHei";
     margin:0;
-    background:#f5f5f5;
+    font-family: "Microsoft JhengHei", sans-serif;
+    display:flex;
 }
 
-header{
+/* 左側 */
+.sidebar{
+    width:30%;
     background:#2c3e50;
     color:white;
     padding:30px;
     text-align:center;
+    min-height:100vh;
 }
 
-.container{
-    width:80%;
-    margin:auto;
-    background:white;
-    padding:30px;
+.profile{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid white;
+}
+
+.sidebar h1{
+    margin:15px 0 5px;
+}
+
+.sidebar p{
+    color:#ccc;
+    font-size:14px;
+}
+
+/* 聯絡 */
+.contact{
+    margin-top:30px;
+    text-align:left;
+    font-size:14px;
+}
+
+.contact div{
+    margin:10px 0;
+}
+
+/* 右側 */
+.main{
+    width:70%;
+    padding:40px;
+    background:#f5f5f5;
+}
+
+/* 區塊 */
+.section{
+    margin-bottom:30px;
 }
 
 h2{
-    border-bottom:2px solid #2c3e50;
-    padding-bottom:5px;
+    border-left:5px solid #3498db;
+    padding-left:10px;
 }
 
-.section{
-    margin-bottom:25px;
+/* 技能圓 */
+.skills{
+    display:flex;
+    gap:15px;
+    margin-top:10px;
 }
 
-.info{
+.circle{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#3498db;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+}
+
+/* 經歷 */
+ul{
     line-height:1.8;
 }
 
-.skill-bar{
-    background:#ddd;
-    border-radius:10px;
-    overflow:hidden;
-    margin-bottom:10px;
-}
-
-.skill-fill{
-    height:20px;
-    background:#3498db;
-    width:0%;
-}
-
-button{
-    padding:10px 15px;
-    border:none;
-    background:#3498db;
-    color:white;
-    cursor:pointer;
-    border-radius:5px;
-}
-
-button:hover{
-    background:#2980b9;
-}
-
-footer{
-    text-align:center;
-    margin-top:20px;
-    color:#666;
-}
 </style>
 </head>
 
 <body>
 
-<header>
-    
-<img src="image/photo.png" class="profile">
+<!-- 左邊 -->
+<div class="sidebar">
+
+<img src="images/photo.png" class="profile">
 
 <h1>楊承諺</h1>
-<p>亞洲大學學生 | 對人工智慧與程式設計有興趣</p>
-</header>
+<p>亞洲大學學生</p>
 
-<div class="container">
+<div class="contact">
+    <div>📞 0912345678</div>
+    <div>✉ example@email.com</div>
+    <div>📍 台灣</div>
+</div>
 
-<div class="section">
-<h2>基本資料</h2>
-<div class="info">
-學校：亞洲大學<br>
-學號：AU114022027<br>
-科系：人工智慧相關領域（申請目標）<br>
-Email：example@email.com
 </div>
-</div>
+
+<!-- 右邊 -->
+<div class="main">
 
 <div class="section">
 <h2>自我介紹</h2>
 <p>
-我是亞洲大學的學生，對人工智慧與程式設計有興趣。
-曾參加創意機器人社團，也修過進階程式設計課程，
-希望未來能在人工智慧領域持續學習與發展。
+對人工智慧與程式設計充滿興趣，
+曾參與創意機器人社團與進階程式設計課程，
+希望未來能成為AI工程師。
 </p>
 </div>
 
 <div class="section">
-<h2>技能</h2>
-
-Python
-<div class="skill-bar">
-<div class="skill-fill" data-skill="80"></div>
+<h2>教育背景</h2>
+<p>亞洲大學（人工智慧相關領域）</p>
 </div>
 
-程式設計
-<div class="skill-bar">
-<div class="skill-fill" data-skill="75"></div>
-</div>
+<div class="section">
+<h2>技能專長</h2>
 
-AI基礎
-<div class="skill-bar">
-<div class="skill-fill" data-skill="65"></div>
+<div class="skills">
+    <div class="circle">Python</div>
+    <div class="circle">程式</div>
+    <div class="circle">AI</div>
 </div>
 
 </div>
@@ -127,37 +145,13 @@ AI基礎
 <h2>經歷</h2>
 <ul>
 <li>創意機器人社團成員</li>
-<li>修習進階程式設計課程</li>
-<li>參與科技相關參訪活動</li>
+<li>進階程式設計課程</li>
+<li>科技參訪活動</li>
 </ul>
 </div>
 
-<button onclick="showTime()">顯示目前時間</button>
-<p id="time"></p>
-
-<footer>
-<p>© 2026 個人履歷</p>
-</footer>
-
 </div>
-
-<script>
-
-function showTime(){
-    const now = new Date();
-    document.getElementById("time").innerText =
-    "現在時間：" + now.toLocaleString();
-}
-
-window.onload=function(){
-    const skills=document.querySelectorAll(".skill-fill");
-    skills.forEach(skill=>{
-        const level=skill.getAttribute("data-skill");
-        skill.style.width=level+"%";
-    });
-}
-
-</script>
 
 </body>
 </html>
+```
