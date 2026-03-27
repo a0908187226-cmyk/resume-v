@@ -97,23 +97,21 @@ ul{
 
 <body>
 
-<audio id="bgm" loop>
+<audio id="bgm" loop muted playsinline>
   <source src="audio/music.wav" type="audio/wav">
 </audio>
 
 <script>
-  const audio = document.getElementById("bgm");
+const audio = document.getElementById("bgm");
 
-  // 嘗試直接播放
-  audio.play().catch(() => {
-    // 若被擋，快速解除靜音再播放
-    audio.muted = true;
+// 先靜音播放（這一步一定成功）
+audio.play().catch(()=>{});
+
+// 使用者點擊後開聲音
+document.addEventListener("click", () => {
+    audio.muted = false;
     audio.play();
-
-    setTimeout(() => {
-      audio.muted = false;
-    }, 100);
-  });
+}, { once: true });
 </script>
 
 <!-- 左邊 -->
